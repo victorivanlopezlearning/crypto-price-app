@@ -1,5 +1,6 @@
 
 import styled from '@emotion/styled';
+import Form from './components/Form';
 import ImageCrypto from './assets/img/image-crypto.png'
 
 const Container = styled.div`
@@ -48,6 +49,7 @@ const App = () => {
       />
       <div>
         <Heading>Cotiza tus Criptomonedas</Heading>
+        <Form />
       </div>
     </Container>
   )
