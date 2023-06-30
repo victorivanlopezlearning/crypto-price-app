@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
+import ErrorMessage from "./ErrorMessage";
 import useSelectCurrency from '../hooks/useSelectCurrency';
 import { currencies } from "../data/currencies";
 
@@ -25,6 +26,7 @@ const InputSubmit = styled.input`
 const Form = () => {
 
   const [ cryptos, setCryptos ] = useState([]);
+  const [ error, setError ] = useState(false);
 
   const [ currency, SelectCurrency ] = useSelectCurrency('Elige tu Moneda', currencies); // [ currency, SelectCurrency ] se pueden nombrar com osea ya que se retorna por indice del custom hook y no por nombre
   const [ crypto, SelectCryptos ] = useSelectCurrency('Elige tu Criptomoneda', cryptos);
@@ -52,18 +54,34 @@ const Form = () => {
     setCryptos(cryptos);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if([currency, crypto].includes('')) {
+      setError(true);
+      return;
+    }
+    setError(false);
+    
+  }
+
   return (
-    <form>
+    <>
+      { error && <ErrorMessage message='Ambos campos son obligatorios' />}
+      <form
+        onSubmit={ handleSubmit }
+      >
 
-      <SelectCurrency />
-      <SelectCryptos />
+        <SelectCurrency />
+        <SelectCryptos />
 
 
-      <InputSubmit 
-        type="submit" 
-        value="Cotizar" 
-      />
-    </form>
+        <InputSubmit 
+          type="submit" 
+          value="Cotizar" 
+        />
+      </form>
+    </>
   )
 }
 
