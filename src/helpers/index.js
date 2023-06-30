@@ -1,0 +1,1 @@
+export { hasData } from './hasData';

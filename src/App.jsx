@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Form from './components/Form';
+import CryptoInfo from './components/CryptoInfo';
+import { hasData } from './helpers';
 import ImageCrypto from './assets/img/image-crypto.png'
 
 const Container = styled.div`
@@ -47,7 +49,7 @@ const App = () => {
   const [ cryptoData, setCryptoData ] = useState({});
 
   useEffect(() => {
-    if(Object.keys(currencies).length > 0) {
+    if(hasData(currencies)) {
       
       const getCurrentCryptoData = async () => {
         const { currency, crypto } = currencies;
@@ -74,6 +76,8 @@ const App = () => {
         <Form 
           setCurrencies={ setCurrencies }
         />
+
+        {(Object.keys(currencies).length > 0) && <CryptoInfo /> }
       </div>
     </Container>
   )
