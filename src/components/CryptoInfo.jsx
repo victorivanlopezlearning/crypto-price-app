@@ -3,15 +3,15 @@ import styled from "@emotion/styled";
 const Container = styled.div`
   color: #FFFFFF;
   font-family: 'Lato', sans-serif;
-  margin-top: 30px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     flex-direction: row;
-    gap: 10px;
+    gap: 15px;
     text-align: start;
   }
   span {
@@ -21,7 +21,8 @@ const Container = styled.div`
 
 const Price = styled.p`
   font-size: 33px;
-  @media (min-width: 768px) {
+  margin: 20px 0;
+  @media (min-width: 1200px) {
     font-size: 30px;
   }
 `
@@ -36,7 +37,7 @@ const Info = styled.p`
 
 const ImageCrypto = styled.img`
   display: block;
-  width: 130px;
+  width: 120px;
 `
 
 
@@ -49,9 +50,9 @@ const CryptoInfo = ({ cryptoData }) => {
       <ImageCrypto src={`https://cryptocompare.com/${IMAGEURL}`} alt="Imagen Criptomoneda" />
 
       <div>
-        <Price>El precio actual es de: <span>{ PRICE }</span></Price>
-        <Info>El precio más alto del día <span>{ HIGHDAY }</span></Info>
-        <Info>El precio más bajo del día <span>{ LOWDAY }</span></Info>
+        <Price>El precio actual es: <span>{ PRICE }</span></Price>
+        <Info>Precio más alto del día: <span>{ HIGHDAY }</span></Info>
+        <Info>Precio más bajo del día: <span>{ LOWDAY }</span></Info>
         <Info>Variación últimas 24 horas: <span>{ CHANGEPCT24HOUR }</span></Info>
         <Info>Última actualización: <span>{ (LASTUPDATE === 'Just now') ? 'Justo ahora' : LASTUPDATE }</span></Info>
       </div>

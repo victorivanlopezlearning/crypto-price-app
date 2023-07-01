@@ -10,7 +10,7 @@ const Container = styled.div`
   max-width: 900px;
   width: 90%;
   margin: 0 auto;
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
