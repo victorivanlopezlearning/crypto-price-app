@@ -77,7 +77,7 @@ const App = () => {
           setCurrencies={ setCurrencies }
         />
 
-        { hasData(cryptoData) && <CryptoInfo /> }
+        { hasData(cryptoData) && <CryptoInfo cryptoData={ cryptoData } /> }
       </div>
     </Container>
   )
