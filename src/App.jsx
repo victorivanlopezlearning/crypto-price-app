@@ -20,7 +20,7 @@ const Container = styled.div`
 
 const Image = styled.img`
   display: none;
-  @media (min-width: 768px) {
+  @media (min-width: 1200px) {
     display: block;
     width: 85%;
     margin: 100px auto 0 auto;
