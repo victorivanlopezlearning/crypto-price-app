@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import Form from './components/Form';
 import CryptoInfo from './components/CryptoInfo';
+import Spinner from './components/Spinner';
 import { hasData } from './helpers';
 import ImageCrypto from './assets/img/image-crypto.png'
 
@@ -47,11 +48,15 @@ const App = () => {
 
   const [ currencies, setCurrencies ] = useState({});
   const [ cryptoData, setCryptoData ] = useState({});
+  const [ loading, setLoading ] = useState(false);
 
   useEffect(() => {
     if(hasData(currencies)) {
       
       const getCurrentCryptoData = async () => {
+        setLoading(true);
+        setCryptoData({});
+        
         const { currency, crypto } = currencies;
         const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`;
         
@@ -59,6 +64,7 @@ const App = () => {
         const data = await response.json();
 
         setCryptoData(data.DISPLAY[crypto][currency]);
+        setLoading(false);
       }
       getCurrentCryptoData();
     }
@@ -77,6 +83,7 @@ const App = () => {
           setCurrencies={ setCurrencies }
         />
 
+        { loading && <Spinner /> }
         { hasData(cryptoData) && <CryptoInfo cryptoData={ cryptoData } /> }
       </div>
     </Container>
