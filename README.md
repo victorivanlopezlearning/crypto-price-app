@@ -6,7 +6,7 @@
 
 ## Built with
 
-- JavaScript Framework - [React](https://es.react.dev/)
+- JavaScript - [React](https://es.react.dev/)
 - CSS Styles - [Emotion](https://emotion.sh/docs/introduction)
 - Mobile-first workflow
 - Custom Hooks
