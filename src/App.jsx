@@ -14,15 +14,17 @@ const Container = styled.div`
   @media (min-width: 1200px) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 2rem;
+    column-gap: 4rem;
   }
 `
 
 const Image = styled.img`
-  max-width: 400px;
-  width: 80%;
-  margin: 100px auto 0 auto;
-  display: block;
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+    width: 85%;
+    margin: 100px auto 0 auto;
+  }
 `
 
 const Heading = styled.h1`
@@ -56,7 +58,7 @@ const App = () => {
       const getCurrentCryptoData = async () => {
         setLoading(true);
         setCryptoData({});
-        
+
         const { currency, crypto } = currencies;
         const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`;
         
